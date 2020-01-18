@@ -14,16 +14,16 @@ resource "null_resource" "docker" {
 
   provisioner "local-exec" {
     working_dir = var.app_folder
-    command     = "docker build -t ${local.app_name} ."
+    command     = "sudo docker build -t ${local.app_name} ."
   }
 
   provisioner "local-exec" {
     working_dir = var.app_folder
-    command     = "docker tag ${local.app_name}:latest ${aws_ecr_repository.this.repository_url}:latest"
+    command     = "sudo docker tag ${local.app_name}:latest ${aws_ecr_repository.this.repository_url}:latest"
   }
 
   provisioner "local-exec" {
     working_dir = var.app_folder
-    command     = "docker push ${aws_ecr_repository.this.repository_url}:latest"
+    command     = "sudo docker push ${aws_ecr_repository.this.repository_url}:latest"
   }
 }
