@@ -1,7 +1,11 @@
-FROM node:10.16-alpine
-RUN mkdir -p /usr/src/app
+FROM node:latest
+
 WORKDIR /usr/src/app
-COPY server.js package.json package-lock.json ./
+
+COPY / .
+
 RUN npm install --production
-EXPOSE 3000
+
 CMD [ "npm", "start" ]
+
+EXPOSE 3000
