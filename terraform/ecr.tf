@@ -3,6 +3,9 @@ resource "aws_ecr_repository" "this" {
 }
 
 resource "null_resource" "docker" {
+  triggers = {
+    always_run = "${timestamp()}"
+  }
   provisioner "local-exec" {
     working_dir = var.app_folder
     command     = "$(aws ecr get-login --no-include-email --region ${var.region})"
