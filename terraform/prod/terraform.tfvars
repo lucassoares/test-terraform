@@ -7,3 +7,4 @@ fargate_memory = 2048
 ac_min_capacity = 3
 ac_max_capacity = 6
 log_retentin = 30
+tag = "prod-01"
