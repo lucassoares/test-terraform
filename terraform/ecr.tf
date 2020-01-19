@@ -18,11 +18,11 @@ resource "null_resource" "docker" {
 
   provisioner "local-exec" {
     working_dir = var.app_folder
-    command     = "docker tag ${local.app_name}:latest ${aws_ecr_repository.this.repository_url}:latest"
+    command     = "docker tag ${local.app_name}:2 ${aws_ecr_repository.this.repository_url}:2"
   }
 
   provisioner "local-exec" {
     working_dir = var.app_folder
-    command     = "docker push ${aws_ecr_repository.this.repository_url}:latest"
+    command     = "docker push ${aws_ecr_repository.this.repository_url}:2"
   }
 }
