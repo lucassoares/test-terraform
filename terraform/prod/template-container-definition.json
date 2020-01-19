@@ -1,7 +1,7 @@
 [
   {
-    "name": "teste",
-    "image": "teste:2",
+    "name": "${container_name}",
+    "image": "${app_image}:2",
     "cpu": ${fargate_cpu},
     "memory": ${fargate_memory},
     "networkMode": "awsvpc",
