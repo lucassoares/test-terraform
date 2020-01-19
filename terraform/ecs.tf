@@ -11,7 +11,7 @@ resource "aws_ecs_task_definition" "this" {
   memory                   = var.fargate_memory
 
   container_definitions = templatefile("${path.module}/${var.env}/template-container-definition.json", {
-    tag           = var.tag
+    tag            = var.tag
     app_image      = aws_ecr_repository.this.repository_url
     app_name       = local.app_name
     container_name = local.container_name
@@ -40,11 +40,6 @@ resource "aws_ecs_service" "this" {
     target_group_arn = aws_alb_target_group.this.id
     container_name   = local.container_name
     container_port   = var.app_port
-  }
-
-    lifecycle {	
-    create_before_destroy = true
-    ignore_changes        = ["task_definition"]	
   }
 
   depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_role, aws_alb_listener.this]

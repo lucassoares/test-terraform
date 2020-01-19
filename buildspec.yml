@@ -12,10 +12,10 @@ phases:
       - cd "$CODEBUILD_SRC_DIR" 
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build started on `date` and build "$CODEBUILD_BUILD_NUMBER"
       - cd terraform
       - terraform init
-      - TF_VAR_tag=1.0.${CODEBUILD_BUILD_NUMBER} terraform apply -auto-approve -no-color
+      - TF_VAR_log=1.0."$CODEBUILD_BUILD_NUMBER" terraform apply -auto-approve -no-color
   post_build:
     commands:
       - echo Build completed on `date`
