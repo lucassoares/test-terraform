@@ -6,8 +6,6 @@ phases:
       docker: 18
   pre_build:
     commands:
-      - "curl -s -qL -o /usr/bin/jq https://stedolan.github.io/jq/download/linux64/jq"	
-      - "chmod +x /usr/bin/jq"
       - "cd /usr/bin"
       - "curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/0.12.19/terraform_0.12.19_linux_amd64.zip"
       - "unzip -o terraform.zip"
@@ -17,7 +15,7 @@ phases:
       - echo Build started on `date`
       - cd terraform
       - terraform init
-      - TF_VAR_tag=${BUILD_NUMBER} terraform apply -auto-approve -no-color
+      - TF_VAR_tag=1.0.${BUILD_NUMBER} terraform apply -auto-approve -no-color
   post_build:
     commands:
       - echo Build completed on `date`
