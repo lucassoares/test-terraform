@@ -11,6 +11,7 @@ resource "aws_ecs_task_definition" "this" {
   memory                   = var.fargate_memory
 
   container_definitions = templatefile("${path.module}/${var.env}/template-container-definition.json", {
+    tag = var.tag
     app_image      = aws_ecr_repository.this.repository_url
     app_name       = local.app_name
     container_name = local.container_name
