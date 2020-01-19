@@ -44,7 +44,6 @@ resource "aws_ecs_service" "this" {
 
     lifecycle {	
     create_before_destroy = true	
-    ignore_changes        = ["task_definition"]	
   }
 
   depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_role, aws_alb_listener.this]
