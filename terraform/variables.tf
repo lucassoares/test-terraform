@@ -61,3 +61,7 @@ variable "cidrblock" {
 variable "log_retention" {
   default = 5
 }
+
+variable "tag" {
+  default = ""
+}
