@@ -41,5 +41,10 @@ resource "aws_ecs_service" "this" {
     container_port   = var.app_port
   }
 
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes        = ["task_definition"]
+  }
+
   depends_on = [aws_iam_role_policy_attachment.ecs_task_execution_role, aws_alb_listener.this]
 }
