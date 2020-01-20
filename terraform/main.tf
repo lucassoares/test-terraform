@@ -5,7 +5,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "curso-terraform-test"
+    bucket = "terraform-test-ecs"
     key    = "terraform.tfstate"
     region = "us-east-1"
   }
