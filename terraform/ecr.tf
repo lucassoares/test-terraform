@@ -13,7 +13,7 @@ resource "null_resource" "docker" {
 
   provisioner "local-exec" {
     working_dir = var.app_folder
-    command     = "docker build -t ${local.app_name} ."
+    command     = "docker build -t ${local.app_name}:${var.tag} ."
   }
 
   provisioner "local-exec" {
